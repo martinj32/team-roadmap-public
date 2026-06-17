@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team Deliverables Roadmap</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #07090e;
+      color: #dde2ee;
+      padding: 2.5rem 2rem;
+      min-height: 100vh;
+    }
+
+    header {
+      max-width: 960px;
+      margin: 0 auto 3rem;
+    }
+
+    header h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #f0f4ff;
+      letter-spacing: -0.4px;
+    }
+
+    header p {
+      font-size: 0.82rem;
+      color: #6b7a99;
+      margin-top: 0.4rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .section {
+      max-width: 960px;
+      margin: 0 auto 3rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-header h2 {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #3d6ef5;
+      white-space: nowrap;
+    }
+
+    .section-header::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(61,110,245,0.2);
+    }
+
+    /* Module cards */
+    .module-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .module-card {
+      background: #0e1018;
+      border: 1px solid #191e2e;
+      border-left: 3px solid #3d6ef5;
+      border-radius: 8px;
+      padding: 0.9rem 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    .module-card:hover {
+      border-color: #3d6ef5;
+      box-shadow: 0 0 18px rgba(61,110,245,0.1);
+    }
+
+    .module-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .module-index {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 1px solid #2a3050;
+      color: #6b7a99;
+      font-size: 0.7rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .module-name {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: #dde2ee;
+    }
+
+    .module-track {
+      font-size: 0.75rem;
+      color: #5a6b8a;
+      margin-top: 0.1rem;
+      font-weight: 500;
+    }
+
+    .date-badge {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #3d6ef5;
+      background: rgba(61,110,245,0.1);
+      border: 1px solid rgba(61,110,245,0.25);
+      border-radius: 5px;
+      padding: 0.25rem 0.7rem;
+      white-space: nowrap;
+      flex-shrink: 0;
+      letter-spacing: 0.02em;
+    }
+
+    /* Analysis product cards */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+
+    .product-card {
+      background: #0e1018;
+      border: 1px solid #191e2e;
+      border-radius: 8px;
+      padding: 1.5rem 1.25rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #3d6ef5, #6d9bff);
+    }
+
+    .product-card:hover {
+      border-color: #2a3a60;
+      box-shadow: 0 0 24px rgba(61,110,245,0.12);
+    }
+
+    .product-acronym {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #f0f4ff;
+      letter-spacing: 0.06em;
+    }
+
+    .product-label {
+      font-size: 0.73rem;
+      color: #5a6b8a;
+      margin-top: 0.3rem;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    .product-divider {
+      width: 28px;
+      height: 1px;
+      background: #1e2438;
+      margin: 1rem auto;
+    }
+
+    .product-date-label {
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #5a6b8a;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .product-date {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #3d6ef5;
+      letter-spacing: 0.02em;
+    }
+
+    footer {
+      max-width: 960px;
+      margin: 0 auto;
+      font-size: 0.7rem;
+      color: #4a5878;
+      text-align: right;
+      padding-top: 1.25rem;
+      border-top: 1px solid #10131c;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 640px) {
+      body { padding: 1.25rem 1rem; }
+      .product-grid { grid-template-columns: 1fr; }
+      header h1 { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Team Deliverables Roadmap</h1>
+    <p>AI Engineering Team &nbsp;·&nbsp; 6-Week Execution Plan</p>
+  </header>
+
+  <div class="section">
+    <div class="section-header">
+      <h2>Course Module Rollout</h2>
+    </div>
+    <div class="module-list">
+
+      <div class="module-card">
+        <div class="module-meta">
+          <div class="module-index">1</div>
+          <div>
+            <div class="module-name">Mental Models</div>
+            <div class="module-track">Pre-Course / Conceptual Foundations</div>
+          </div>
+        </div>
+        <div class="date-badge">Week 1</div>
+      </div>
+
+      <div class="module-card">
+        <div class="module-meta">
+          <div class="module-index">2</div>
+          <div>
+            <div class="module-name">AI Literacy</div>
+            <div class="module-track">Bedrock</div>
+          </div>
+        </div>
+        <div class="date-badge">Week 2</div>
+      </div>
+
+      <div class="module-card">
+        <div class="module-meta">
+          <div class="module-index">3</div>
+          <div>
+            <div class="module-name">Personalizing Your AI</div>
+            <div class="module-track">Bedrock</div>
+          </div>
+        </div>
+        <div class="date-badge">Week 3</div>
+      </div>
+
+      <div class="module-card">
+        <div class="module-meta">
+          <div class="module-index">4</div>
+          <div>
+            <div class="module-name">The Machine</div>
+            <div class="module-track">Terminal Basics</div>
+          </div>
+        </div>
+        <div class="date-badge">Week 4</div>
+      </div>
+
+      <div class="module-card">
+        <div class="module-meta">
+          <div class="module-index">5</div>
+          <div>
+            <div class="module-name">The Terminal</div>
+            <div class="module-track">Terminal Basics</div>
+          </div>
+        </div>
+        <div class="date-badge">Week 5</div>
+      </div>
+
+      <div class="module-card">
+        <div class="module-meta">
+          <div class="module-index">6</div>
+          <div>
+            <div class="module-name">Agentic Concepts</div>
+            <div class="module-track">Agentic AI</div>
+          </div>
+        </div>
+        <div class="date-badge">Week 6</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <h2>Automation Products</h2>
+    </div>
+    <div class="product-grid">
+
+      <div class="product-card">
+        <div class="product-acronym">Tool 1</div>
+        <div class="product-label">Automated Data Aggregation</div>
+        <div class="product-divider"></div>
+        <div class="product-date-label">Available</div>
+        <div class="product-date">Week 4</div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-acronym">Tool 2</div>
+        <div class="product-label">Automated Visualization</div>
+        <div class="product-divider"></div>
+        <div class="product-date-label">Available</div>
+        <div class="product-date">Week 4</div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-acronym">Tool 3</div>
+        <div class="product-label">Automated Report Drafting</div>
+        <div class="product-divider"></div>
+        <div class="product-date-label">Available</div>
+        <div class="product-date">Week 4</div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    6-Week Execution Roadmap
+  </footer>
+
+</body>
+</html>
